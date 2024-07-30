@@ -9,10 +9,13 @@
 <body>
     <header>
         <nav>
-            <div class="menu-toggle" id="menuToggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+            <div class="menu-container">
+                <div class="menu-toggle" id="menuToggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <div class="menu-title">Menu</div>
             </div>
             <ul id="navMenu">
                 <li><a href="#home">Beranda</a></li>
@@ -22,6 +25,20 @@
             </ul>
         </nav>
     </header>
+
+    <!-- Pop-up Menu -->
+    <div class="popup-menu" id="popupMenu">
+        <div class="popup-content">
+            <button class="popup-close" id="popupClose">&times;</button>
+            <h2 class="popup-title">Menu</h2>
+            <ul>
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Tentang Saya</a></li>
+                <li><a href="#portfolio">Portofolio</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </div>
+    </div>
 
     <section id="home">
         <h1>Selamat Datang di Portofolio Saya</h1>

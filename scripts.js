@@ -37,8 +37,13 @@ document.getElementById('backToTop').addEventListener('click', function() {
     });
 });
 
-// Toggle Menu for Small Screens
+// Toggle Pop-up Menu
 document.getElementById('menuToggle').addEventListener('click', function() {
-    const navMenu = document.getElementById('navMenu');
-    navMenu.classList.toggle('active');
+    const popupMenu = document.getElementById('popupMenu');
+    popupMenu.classList.toggle('show');
+});
+
+// Close Pop-up Menu
+document.getElementById('popupClose').addEventListener('click', function() {
+    document.getElementById('popupMenu').classList.remove('show');
 });

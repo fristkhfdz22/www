@@ -4,11 +4,12 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: #f4f4f4; /* Latar belakang umum yang lebih terang */
 }
 
 /* Header dan Navigasi */
 header {
-    background-color: #333;
+    background-color: #000; /* Hitam */
     color: #fff;
     padding: 1em;
     position: relative;
@@ -20,10 +21,16 @@ nav {
     align-items: center;
 }
 
+.menu-container {
+    display: flex;
+    align-items: center;
+}
+
 .menu-toggle {
-    display: none;
+    display: flex;
     flex-direction: column;
     cursor: pointer;
+    margin-right: 10px;
 }
 
 .menu-toggle .bar {
@@ -32,8 +39,20 @@ nav {
     width: 25px;
     margin: 3px 0;
     border-radius: 3px;
+    transition: background-color 0.3s ease;
 }
 
+.menu-toggle:hover .bar {
+    background-color: #9b59b6; /* Ungu saat hover */
+}
+
+.menu-title {
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Gaya Menu Navigasi */
 #navMenu {
     list-style: none;
     padding: 0;
@@ -48,38 +67,98 @@ nav {
 #navMenu a {
     color: #fff;
     text-decoration: none;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
 }
 
 #navMenu a:hover {
-    text-decoration: underline;
+    color: #9b59b6; /* Ungu */
+    border-bottom: 2px solid #9b59b6; /* Garis bawah ungu saat hover */
+}
+
+/* Gaya Pop-up Menu */
+.popup-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Hitam semi-transparan */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.popup-menu.show {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup-content {
+    background-color: #1e1e1e; /* Gelap abu-abu */
+    border-radius: 10px;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    animation: slideIn 0.3s ease;
+}
+
+.popup-title {
+    margin: 0 0 10px 0;
+    font-size: 24px;
+    color: #9b59b6; /* Ungu */
+}
+
+.popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.popup-close:hover {
+    color: #9b59b6; /* Ungu */
+}
+
+.popup-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.popup-content li {
+    margin: 10px 0;
+}
+
+.popup-content a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.popup-content a:hover {
+    color: #9b59b6; /* Ungu */
 }
 
 /* Gaya Menu Hamburger untuk layar kecil */
 @media (max-width: 768px) {
     #navMenu {
         display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background-color: #333;
-        width: 100%;
-        border-top: 1px solid #444;
     }
 
     #navMenu.active {
-        display: flex;
-    }
-
-    #navMenu li {
-        margin: 0;
-        padding: 10px;
-        border-bottom: 1px solid #444;
-    }
-
-    #navMenu a {
-        display: block;
-        padding: 10px;
+        display: none;
     }
 
     .menu-toggle {
@@ -90,16 +169,29 @@ nav {
 /* Gaya Umum */
 section {
     padding: 2em;
+    background-color: #fff; /* Latar belakang bagian */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 h1, h2 {
-    color: #333;
+    color: #333; /* Warna teks utama */
 }
 
 .project {
     border: 1px solid #ddd;
     padding: 1em;
     margin-bottom: 1em;
+    border-left: 4px solid #9b59b6; /* Ungu untuk aksen border */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.project:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px); /* Efek angkat saat hover */
 }
 
 form {
@@ -115,35 +207,45 @@ input, textarea {
     padding: 0.5em;
     border: 1px solid #ccc;
     border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus {
+    border-color: #9b59b6; /* Ungu saat fokus */
+    outline: none;
 }
 
 button {
     padding: 0.7em;
     border: none;
     border-radius: 4px;
-    background-color: #333;
+    background-color: #000; /* Hitam */
     color: #fff;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-    background-color: #555;
+    background-color: #444; /* Warna hitam lebih terang */
+    transform: scale(1.05); /* Efek zoom saat hover */
 }
 
 footer {
-    background-color: #333;
+    background-color: #000; /* Hitam */
     color: #fff;
     text-align: center;
     padding: 1em;
 }
 
 .social-media a {
-    color: #fff;
+    color: #9b59b6; /* Ungu */
     text-decoration: none;
     margin: 0 0.5em;
+    transition: color 0.3s ease;
 }
 
 .social-media a:hover {
+    color: #fff; /* Putih saat hover */
     text-decoration: underline;
 }
 
@@ -152,14 +254,27 @@ footer {
     bottom: 20px;
     right: 20px;
     padding: 10px 20px;
-    background-color: #333;
+    background-color: #000; /* Hitam */
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     display: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 #backToTop:hover {
-    background-color: #555;
+    background-color: #444; /* Hitam lebih terang */
+    transform: scale(1.1); /* Efek zoom saat hover */
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
