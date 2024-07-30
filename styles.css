@@ -1,3 +1,4 @@
+/* Reset dan Gaya Umum */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -5,27 +6,88 @@ body {
     box-sizing: border-box;
 }
 
+/* Header dan Navigasi */
 header {
     background-color: #333;
     color: #fff;
     padding: 1em;
+    position: relative;
 }
 
-nav ul {
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    background-color: #fff;
+    height: 3px;
+    width: 25px;
+    margin: 3px 0;
+    border-radius: 3px;
+}
+
+#navMenu {
     list-style: none;
     padding: 0;
+    margin: 0;
+    display: flex;
 }
 
-nav ul li {
-    display: inline;
+#navMenu li {
     margin-right: 10px;
 }
 
-nav ul li a {
+#navMenu a {
     color: #fff;
     text-decoration: none;
 }
 
+#navMenu a:hover {
+    text-decoration: underline;
+}
+
+/* Gaya Menu Hamburger untuk layar kecil */
+@media (max-width: 768px) {
+    #navMenu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #333;
+        width: 100%;
+        border-top: 1px solid #444;
+    }
+
+    #navMenu.active {
+        display: flex;
+    }
+
+    #navMenu li {
+        margin: 0;
+        padding: 10px;
+        border-bottom: 1px solid #444;
+    }
+
+    #navMenu a {
+        display: block;
+        padding: 10px;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+}
+
+/* Gaya Umum */
 section {
     padding: 2em;
 }
@@ -84,6 +146,7 @@ footer {
 .social-media a:hover {
     text-decoration: underline;
 }
+
 #backToTop {
     position: fixed;
     bottom: 20px;
